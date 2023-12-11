@@ -1,0 +1,53 @@
+import java.util.*;
+class Student{
+    String name,add;
+    int rno;
+    
+    Student(String name,String add,int rno){
+        this.name=name;
+        this.add=add;
+        this.rno=rno;
+    }
+    public String toString(){
+        return this.rno+" "+this.name+" "+this.add;
+    }
+}
+class SortByRoll implements Comparator<Student>{
+    public int compare(Student a,Student b){
+        return a.rno-b.rno;
+    }
+}
+class SortByName implements Comparator<Student>{
+    public int compare(Student a,Student b){
+        return a.name.compareTo(b.name);
+    }
+}
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);    
+        ArrayList<Student> ar=new ArrayList<Student>();
+        System.out.print("Enter Number of Students : ");
+        int n=sc.nextInt();
+        for(int i=0;i<n;i++){
+            System.out.print("Enter Name : ");
+            String s=sc.next();
+            System.out.print("Enter Address : ");
+            String m=sc.next();
+            System.out.print("Enter RollNo : ");
+            int x=sc.nextInt();
+            ar.add(new Student(s,m,x));
+        }
+        System.out.print("Unsorted List\n");
+        for(int i=0;i<ar.size();i++)
+            System.out.print(ar.get(i)+"\n");
+        System.out.print("Sorted  by Roll Number List\n");
+        Collections.sort(ar,new SortByRoll());
+        for(int i=0;i<ar.size();i++)
+            System.out.print(ar.get(i)+"\n");
+        System.out.print("Sorted  by Name List\n");
+        Collections.sort(ar,new SortByName());
+        for(int i=0;i<ar.size();i++)
+            System.out.print(ar.get(i)+"\n");
+    }
+}
+    

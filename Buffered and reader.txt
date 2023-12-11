@@ -1,0 +1,32 @@
+import java.io.*;
+class Main{
+    public static void main(String args[]){
+        String file1="input.txt";
+        String file2="output.txt";
+        try{
+            BufferedWriter writer=new BufferedWriter(new FileWriter(file1));
+            writer.write("Hello World!");
+            writer.newLine();
+            writer.write("This is Example");
+            writer.close();
+            BufferedReader reader=new BufferedReader(new FileReader(file1));
+            String line;
+            while((line=reader.readLine())!=null)
+                System.out.println(line);
+            reader.close();
+            BufferedReader u=new BufferedReader(new FileReader(file1));
+            BufferedWriter v=new BufferedWriter(new FileWriter(file2));
+            String l;
+            while((l=u.readLine())!=null){
+                v.write(l);
+                v.newLine();
+            }
+            u.close();
+            v.close();
+            System.out.println("Copying Successful\n");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+}

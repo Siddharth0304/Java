@@ -1,0 +1,47 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+class Employee{
+    private String name;
+    private int per,mat,phy,chem;
+    Employee(String name,int mat,int phy,int chem){
+        this.name=name;
+        this.mat=mat;
+        this.phy=phy;
+        this.chem=chem;
+    }
+    void calculate(){
+        per=(mat+phy+chem)/3;
+        System.out.println("Percentage Scored By "+name+" : "+per);
+        if(per>=90 && per<=100)
+            System.out.println("Grade A+");
+        else if(per>=80 && per<90)
+            System.out.println("Grade A");
+        else if(per>=70 && per<80)
+            System.out.println("Grade B");
+        else if(per>=60 && per<70)
+            System.out.println("Grade C");
+        else if(per>=50 && per<60)
+            System.out.println("Grade D");
+        else if(per>=35 && per<50)
+            System.out.println("Grade E");
+        else
+            System.out.println("Fail");
+    }
+}
+class Main{
+    public static void main(String args[])throws Exception{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter name of Student : ");
+        String name=br.readLine();
+        System.out.print("Maths : ");
+        int m=Integer.parseInt(br.readLine());
+        System.out.print("Physics : ");
+        int p=Integer.parseInt(br.readLine());
+        System.out.print("Chemistry : ");
+        int c=Integer.parseInt(br.readLine());
+        Employee emp=new Employee(name,m,p,c);
+        emp.calculate();
+    }
+}

@@ -1,0 +1,41 @@
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        HashMap<String,Integer> hm=new HashMap<String,Integer>();
+        int a,b;
+        String str;
+        do{
+            System.out.print("1.Insert\t\t2.KeySearch\n3.ValueSearch\t4.Print\n5.Exit\n");
+            System.out.print("Enter Your Choice : ");
+            a=sc.nextInt();
+            switch(a){
+                case 1:System.out.print("Enter String : ");
+                        str=sc.next();
+                        System.out.print("Enter Asscociated Value : ");
+                        b=sc.nextInt();
+                        hm.put(str,b);break;
+                case 2:System.out.print("Enter Key To Be Searched : ");
+                        str=sc.next();
+                        if(hm.containsKey(str))
+                            System.out.print("It Exists\n");
+                        else
+                            System.out.print("No Such Element Exists\n");
+                        break;
+                case 3:System.out.print("Enter Value To Be Searched : ");
+                        b=sc.nextInt();
+                        if(hm.containsValue(b))
+                            System.out.print("Element Exists\n");
+                        else
+                            System.out.println("No Such Element Exists\n");
+                        break;
+                case 4:for(Map.Entry<String,Integer> entry:hm.entrySet())
+                        System.out.print(entry.getKey()+"-"+entry.getValue()+"\n");
+                        System.out.println();
+                case 5:System.out.print("Exit\n");break;
+            }
+        }
+        while(a!=5);
+        
+    }
+}

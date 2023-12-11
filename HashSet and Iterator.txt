@@ -1,0 +1,39 @@
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        HashSet<Integer> se=new HashSet<Integer>();
+        int a,b;
+        do{
+            System.out.print("1.Insert\t2.Delete\n3.Search\t4.Print\n5.Exit\n");
+            System.out.print("Enter Your Choice : ");
+            a=sc.nextInt();
+            switch(a){
+                case 1:System.out.print("Enter Element : ");
+                        b=sc.nextInt();
+                        se.add(b);break;
+                case 2:System.out.print("Enter Element To Be Deleted : ");
+                        b=sc.nextInt();
+                        if(se.contains(b))
+                            se.remove(b);
+                        else
+                            System.out.print("No Such Element Exists\n");
+                        break;
+                case 3:System.out.print("Enter Element To Be Searched : ");
+                        b=sc.nextInt();
+                        if(se.contains(b))
+                            System.out.print("Element Exists\n");
+                        else
+                            System.out.println("No Such Element Exists\n");
+                        break;
+                case 4:Iterator<Integer> it=se.iterator();
+                        while(it.hasNext())
+                            System.out.print(it.next()+" ");
+                            System.out.println();
+                case 5:System.out.print("Exit\n");break;
+            }
+        }
+        while(a!=5);
+        
+    }
+}

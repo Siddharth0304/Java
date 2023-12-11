@@ -1,0 +1,100 @@
+import java.util.*;
+interface power2{
+    void pow(int num);
+}
+class Pow implements power2{
+    public void pow(int num){
+        System.out.println("2^"+num+" : "+(1<<num));
+       
+    }
+}
+interface BinarySearch{
+    void binarySearch(int arr[],int n,int key);
+    static int sum(int arr[],int n){
+        int s=0;
+            for(int i=0;i<n;i++)
+                s+=arr[i];
+            return s;
+        }
+   
+}
+interface SelectionSort{
+    void selectionSort(int arr[],int n);
+}
+class Array implements SelectionSort,BinarySearch{
+    public void selectionSort(int arr[],int n){
+        for(int i=0;i<n-1;i++){
+            for(int j=i;j<n;j++){
+                if(arr[i]>arr[j]){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+    }
+    public void binarySearch(int arr[],int n,int key){
+        int start=0,end=n-1,flag=0;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(arr[mid]==key){
+                System.out.println("Element found");flag=1;break;
+            }
+            else if(arr[mid]>key)
+                end=mid-1;
+            else
+                start=mid+1;
+            }
+            if(flag==0)
+                System.out.println("Element not found");
+        }
+       
+}
+interface perfectSquare{
+    void perfect(int num);
+}
+interface Setbits extends perfectSquare{
+    void set(int num);
+}
+class Bits implements Setbits{
+    public void perfect(int num){
+        if((num&(num-1))==0)
+            System.out.println(num+" is Perfect Square");
+        else
+            System.out.println(num+" is not a Perfect Square");
+    }
+    public void set(int num){
+        int v=0,x=num;
+        while(num!=0){
+            v++;
+            num=(num&(num-1));
+        }
+        System.out.println("Number of set bits in "+x+" : "+v);
+    }
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter number to find 2^num : ");
+        int n=sc.nextInt();
+        Pow p=new Pow();
+        p.pow(n);
+        System.out.print("Enter size of Array : ");
+        int size=sc.nextInt();
+        System.out.print("Enter Elements : ");
+        int[] arr=new int[size];
+        for(int i=0;i<size;i++)
+            arr[i]=sc.nextInt();
+        Array ay=new Array();
+        ay.selectionSort(arr,size);
+        System.out.print("Enter Key : ");
+        int key=sc.nextInt();
+        ay.binarySearch(arr,size,key);
+        System.out.println("Sum of array elements : "+BinarySearch.sum(arr,size));
+        System.out.print("Enter number to find whether a perfect square or not : ");
+        int babu=sc.nextInt();
+        Bits b=new Bits();
+        b.perfect(babu);
+        b.set(babu);
+    }
+}

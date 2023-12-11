@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+class Array{
+    void maxElement(int ar[],int n){
+        Arrays.sort(ar,0,n);
+        System.out.print("Largest Element : "+ar[n-1]+"\n");
+    }
+    int sum(int ar[],int n){
+        int s=0;
+        for(int i=0;i<n;i++)
+            s+=ar[i];
+        return s;
+    }
+}
+class Array1 extends Array{
+    void display(int ar[],int n){
+        System.out.print("The Array Elements Are : \n");
+        for(int i=0;i<n;i++)
+            System.out.print(ar[i]+" ");
+        System.out.print("\n");
+    }
+    
+}
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter Size of Array : ");
+        int n=sc.nextInt();
+        System.out.print("Enter Array Elements :\n");
+        int[] ar=new int[n];
+        for(int i=0;i<n;i++)
+            ar[i]=sc.nextInt();
+        Array1 d=new Array1();
+        d.display(ar,n);
+        d.maxElement(ar,n);
+        System.out.println("The sum of array elements : "+d.sum(ar,n));
+    }
+} 

@@ -1,0 +1,44 @@
+import java.util.*;
+import java.io.*;
+class exp extends Exception{
+    public exp(String s){
+        super(s);
+    }
+}
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        Stack<Integer> st=new Stack<Integer>();
+        System.out.print("Enter Postfix Expression(Operations Allowed -: '+','-' ) : ");
+        String s=sc.nextLine();
+        int ans=0;
+        for(int i=0;i<s.length();i++){
+            try{
+                if((s.charAt(i)=='*') ||( s.charAt(i)=='/')) throw new exp("Operators are not valid");
+                else{
+                    if(s.charAt(i)=='+' || s.charAt(i)=='-'){
+                        int m=st.pop();
+                        int n=st.pop();
+                        if(s.charAt(i)=='+')
+                            st.push((n+m));
+                        if(s.charAt(i)=='-')
+                            st.push(n-m);
+                        
+                    }
+                    else{
+                        char ch=s.charAt(i);
+                        int x=ch-'0';
+                        st.push(x);
+                    }
+                }
+            }
+            catch(exp e){
+                System.out.print(e.getMessage()+"\n");
+                break;
+            }
+        }
+        if(st.size()==1)
+        System.out.print(st.peek()+"\n");
+        
+    }
+}

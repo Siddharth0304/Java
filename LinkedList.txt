@@ -1,0 +1,37 @@
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        LinkedList<Integer> ll=new LinkedList<Integer>();
+        int a,b;
+        do{
+            System.out.print("1.InsertAtHead\t2.InsertAtTail\t3.InsertCustom\n4.DeleteAtHead\t5.DeleteAtTail\t6.Print\n7.Exit\n");
+            System.out.print("Enter Your Choice : ");
+            a=sc.nextInt();
+            switch(a){
+                case 1:System.out.print("Enter Element : ");
+                        b=sc.nextInt();
+                        ll.addFirst(b);break;
+                case 2:System.out.print("Enter Element : ");
+                        b=sc.nextInt();
+                        ll.addLast(b);break;
+                case 3:System.out.print("Enter Element : ");
+                        b=sc.nextInt();
+                        System.out.print("Enter Position : ");
+                        int c=sc.nextInt();
+                        ll.add(c-1,b);break;
+                case 4:System.out.print("Element Deleted : "+ll.pollFirst()+"\n");break;
+                case 5:System.out.print("Element Deleted : "+ll.pollLast()+"\n");break;
+                case 6:int i=0;
+                        while(i<ll.size()){
+                            System.out.print(ll.get(i)+"->");
+                            i++;
+                        }
+                        System.out.print("NULL\n");break;
+                case 7:System.out.print("Exit\n");break;
+            }
+        }
+        while(a!=7);
+        
+    }
+}

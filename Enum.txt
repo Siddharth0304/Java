@@ -1,0 +1,19 @@
+import java.util.*;
+enum Season{
+        Summer,
+        Winter,
+        Rain,
+        Spring;
+}
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in); 
+        Season ar[]=Season.values();
+        for(int i=0;i<4;i++)
+            System.out.print(ar[i]+" ");
+        System.out.print(Season.valueOf("Summer"));
+        
+        
+    }
+}
+    

@@ -1,0 +1,52 @@
+import java.util.*;
+import java.io.*;
+class exp extends Exception{
+    public exp(String s){
+        super(s);
+    }
+}
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        Stack<Integer> st=new Stack<Integer>();
+        System.out.print("Enter size of stack : ");
+        int n=sc.nextInt();
+        boolean f=true;
+        while(f){
+            System.out.print("1.Push\t2.Pop\n3.Peek\n");
+            System.out.print("Enter Your Choice : ");
+            int c=sc.nextInt();
+            switch(c){
+                case 1:System.out.print("Enter Element : ");
+                        try{
+                            int x=sc.nextInt();
+                            if(st.size()>=n)
+                                throw new exp("Error:The Stack is Full.");
+                            else
+                                st.push(x);
+                                
+                        }
+                        catch(exp e){
+                            System.out.print(e.getMessage()+"\n");
+                            f=false;
+                        }
+                        break;
+                case 2:try{
+                            if(st.size()>=1)
+                                System.out.print("Popped Element : "+st.pop()+"\n");
+                            else
+                                throw new exp("Error:The Stack is Empty.");
+                        }
+                        catch(exp e){
+                            System.out.print(e.getMessage()+"\n");
+                            f=false;
+                        }
+                        break;
+                case 3:System.out.print("Top Element : "+st.peek()+"\n");break;
+                default:System.out.print("Wrong Choice\n");
+                
+            }
+        }
+        
+    }
+}

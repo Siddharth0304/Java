@@ -1,0 +1,25 @@
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in); 
+        Vector<Integer> v=new Vector<Integer>();
+        int a;
+        do{
+            System.out.print("1.Insert\t2.Print\n3.Exit\n");
+            System.out.print("Enter Choice : ");
+            a=sc.nextInt();
+            switch(a){
+                case 1:System.out.print("Enter Element : ");
+                        int b=sc.nextInt();
+                        v.add(b);break;
+                case 2:Enumeration e=v.elements();
+                        while(e.hasMoreElements())
+                            System.out.print(e.nextElement()+" ");
+                        System.out.println();break;
+                case 3:System.out.print("Exit\n");
+            }
+        }
+        while(a!=3);
+    }
+}
+    

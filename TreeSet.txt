@@ -1,0 +1,32 @@
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        TreeSet<Integer> st=new TreeSet<Integer>();
+        int a,b;
+        do{
+            System.out.print("1.Insert\t\t\t2.DeleteAtHead\n3.DeleteAtTail\t\t4.Ceil\n5.Floor\t\t\t\t6.Print\n7.Exit\n");
+            System.out.print("Enter Your Choice : ");
+            a=sc.nextInt();
+            switch(a){
+                case 1:System.out.print("Enter Element : ");
+                        b=sc.nextInt();
+                        st.add(b);break;
+                case 2:System.out.print("Element Deleted : "+st.pollFirst()+"\n");break;
+                case 3:System.out.print("Element Deleted : "+st.pollLast()+"\n");break;
+                case 4:System.out.print("Enter Element To Find It's Ceil : ");
+                        b=sc.nextInt();
+                        System.out.print(st.ceiling(b)+"\n");break;
+                case 5:System.out.print("Enter Element To Find It's Floor : ");
+                        b=sc.nextInt();
+                        System.out.print(st.floor(b)+"\n");break;
+                case 6:for(Integer value:st)
+                        System.out.print(value+" ");
+                        System.out.print("\n");break;          
+                case 7:System.out.print("Exit\n");break;
+            }
+        }
+        while(a!=7);
+        
+    }
+}

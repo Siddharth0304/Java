@@ -1,0 +1,29 @@
+import java.util.*;
+interface hello{
+    void a();
+    void b();
+    void c();
+}
+abstract class hero implements hello{
+    public void a(){
+        System.out.println("Print a");
+    }
+}
+class M extends hero{
+    public void a(){
+         System.out.print("Print A\n");
+    }
+    public void b(){
+         System.out.print("Print B\n");
+    }
+    public void c(){
+         System.out.print("Print C\n");
+    }
+    
+}
+class Main{
+    public static void main(String args[]){
+        M m=new M();
+        m.a();m.b();m.c();
+}
+}

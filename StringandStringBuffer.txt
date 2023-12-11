@@ -1,0 +1,18 @@
+import java.util.*;
+import java.io.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter String to be stored using String and StringBuffer :\n");
+        String s=sc.nextLine();
+        StringBuffer sb=new StringBuffer(s);
+        System.out.print("Enter String to concat :\n");
+        String s1=sc.nextLine();
+        System.out.print("Concat result for String :\n");
+        s.concat(s1);
+        System.out.print(s+"\n");
+        System.out.print("Concat result for StringBuffer :\n");
+        System.out.print((sb.append(s1))+"\n");
+        
+    }
+}

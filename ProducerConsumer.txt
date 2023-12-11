@@ -1,0 +1,61 @@
+class Q{
+    boolean value=false;
+    int num;
+    synchronized void put(int num){
+        while(value){
+            try{wait();}catch(Exception e){}
+        }
+        System.out.print("Producer Gives : "+num+"\n");
+        this.num=num;
+        value=true;
+        notify();
+    }
+    synchronized void get(){
+        while(!value){
+            try{wait();}catch(Exception e){}
+        }
+        System.out.print("Consumer Takes : "+num+"\n");
+        value=false;
+        notify();
+        
+    }
+}
+class Producer{
+    Q q;
+    Producer(Q q){
+        Thread t1=new Thread(new Runnable(){
+            public void run(){
+                int i=0;
+                while(true){
+                    q.put(i++);
+                    try{Thread.sleep(1000);}
+                    catch(InterruptedException e){}
+                }
+            }
+        });
+        t1.start();
+    }
+}
+class Consumer{
+    Q q;
+    Consumer(Q q){
+        Thread t2=new Thread(new Runnable(){
+            public void run(){
+                while(true){
+                    q.get();
+                    try{Thread.sleep(1000);}
+                    catch(InterruptedException e){}
+                }
+            }
+        });
+        t2.start();
+    }
+}
+class Main{
+    public static void main(String args[]) {
+        Q q=new Q();
+        new Producer(q);
+        new Consumer(q);
+    
+    }
+}

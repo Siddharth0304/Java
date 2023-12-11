@@ -1,0 +1,43 @@
+import java.util.*;
+abstract class array{
+    abstract int sum(int arr[],int n);
+    abstract void sort(int arr[],int n);
+}
+class imp extends array{
+    int sum(int arr[],int n){
+        int s=0;
+        for(int i=0;i<n;i++)
+            s+=arr[i];
+        return s;
+    }
+    void sort(int arr[],int n){
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n-1;j++){
+                if(arr[j]>arr[j+1]){
+                    int temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+        for(int i=0;i<n;i++)
+            System.out.print(arr[i]+" ");
+        System.out.println();
+    }
+}
+class Main{
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter size of Array : ");
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        System.out.print("Enter array elements : ");
+        for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+        imp obj=new imp();
+        System.out.println("The sum of array elements : "+obj.sum(arr,n));
+        System.out.println("Sorted elements order :-");
+        obj.sort(arr,n);
+    }
+}

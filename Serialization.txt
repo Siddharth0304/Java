@@ -1,0 +1,34 @@
+import java.io.*;
+class Student implements Serializable{
+    String name;
+    int rno;
+    Student(String name,int rno){
+        this.name=name;
+        this.rno=rno;
+    }
+}
+class Main{
+    public static void main(String args[]){
+        Student st=new Student("Rama",23);
+        try{
+            FileOutputStream fos=new FileOutputStream("input.txt");
+            ObjectOutputStream oos=new ObjectOutputStream(fos);
+            oos.writeObject(st);
+            oos.close();
+            fos.close();
+            System.out.println("Serialization Success");
+        }
+        catch(Exception e){}
+        try{
+            FileInputStream fis=new FileInputStream("input.txt");
+            ObjectInputStream ois=new ObjectInputStream(fis);
+            Student s2=(Student)ois.readObject();
+            fis.close();
+            ois.close();
+            System.out.println("Deserialization Success");
+            System.out.println(s2.name+" "+s2.rno);
+        }
+        catch(Exception e){}
+    }
+}
+    

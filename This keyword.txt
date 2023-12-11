@@ -1,0 +1,42 @@
+import java.io.*;
+import java.lang.*;
+class This{
+    String name;
+    int m,p,c;
+    This(){
+        System.out.print("Hello Student!\n");
+    }
+    This(String name,int m,int p,int c){
+        this();
+        this.name=name;
+        this.m=m;
+        this.p=p;
+        this.c=c;
+    }
+    void avg(){
+        System.out.print("Student Name - "+this.name+"\n");
+        System.out.print("Maths Marks - "+this.m+"\n");
+        System.out.print("Physics Marks - "+this.p+"\n");
+        System.out.print("Chemistry Marks - "+this.c+"\n");
+        System.out.print("Average - "+(float)((m+p+c)/3)+"\n");
+    }
+    void x(){
+	this.avg();
+    }
+}
+class Main{
+    public static void main(String args[]) throws IOException {
+        InputStreamReader fis=new InputStreamReader(System.in);
+        BufferedReader br=new BufferedReader(fis);
+        System.out.print("Enter Student Name : ");
+        String name=br.readLine();
+        System.out.print("Enter Maths Marks : ");
+        int m=Integer.parseInt(br.readLine());
+        System.out.print("Enter Physics Marks : ");
+        int p=Integer.parseInt(br.readLine());
+        System.out.print("Enter Chemistry Marks : ");
+        int c=Integer.parseInt(br.readLine());
+        This t=new This(name,m,p,c);
+        t.avg();
+    }
+}
